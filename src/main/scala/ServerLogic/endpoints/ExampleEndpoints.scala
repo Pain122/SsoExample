@@ -3,9 +3,7 @@ package ServerLogic.endpoints
 import sttp.model.headers.WWWAuthenticateChallenge
 import sttp.tapir._
 
-object Example {
-//  val authEndpoint = endpoint.get.securityIn()
-
+object ExampleEndpoints {
   val SomeLogicEndpoint: Endpoint[String, Unit, Unit, String, Any] =
     endpoint.get
       .securityIn(auth.bearer[String](WWWAuthenticateChallenge.bearer))

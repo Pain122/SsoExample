@@ -1,13 +1,13 @@
 package UserLogic.endpoint
 
 import UserLogic.model.LoginPassword
+import sttp.tapir._
 import sttp.tapir.generic.auto._
-import sttp.tapir.json.circe._
-import io.circe.generic.auto._
+import sttp.tapir.json.tethysjson.jsonBody
 
 object Endpoints {
-  val userLogin: Endpoint[String, Unit, Unit, String, Any] =
+  val userLogin: Endpoint[Unit, LoginPassword, Unit, String, Any] =
     endpoint.post
-      .in[[LoginPassword])
+      .in(jsonBody[LoginPassword])
       .out(stringBody)
 }
